@@ -7,7 +7,6 @@ game = () => {
 
   for (let i = 0; i < 5; i++) {
     
-
     // Computers Random Selection Process
     getComputerChoice = () => {
       const randomNum = Math.random();
@@ -24,34 +23,54 @@ game = () => {
     let computerSelection = getComputerChoice();
 
     // Asks for the Players Selection and Stores it
-    let playerChoice = prompt(`Please enter your choice:`);
-    let playerSelection = playerChoice.toLocaleLowerCase();     // converts the prompt to lowercase (case-sensitive)
+    let getPlayerSelection = prompt(`Please enter your choice:`);
+    let playerSelection = getPlayerSelection.toLocaleLowerCase();   // converts the prompt to lowercase
 
 
     let result;
     // plays a single round against the Comp
     round = (playerSelection, computerSelection) => {
-      if (playerSelection === "rock" && computerSelection === "rock" ) {
+
+      if (playerSelection === "rock" && 
+      computerSelection === "rock" ) {
         return "Draw !";
-      } else if (playerSelection === "rock" && computerSelection === "paper" ) {
+      } 
+      else if (playerSelection === "rock" && 
+      computerSelection === "paper" ) {
         return "You Lose! Paper beats Rock";
-      } else if (playerSelection === "rock" && computerSelection === "scissors" ) {
+      } 
+      else if (playerSelection === "rock" && 
+      computerSelection === "scissors" ) {
         return "You Win! Rock beats Scissors";
-      } else if (playerSelection === "paper" && computerSelection === "paper" ) {
+      } 
+      else if (playerSelection === "paper" && 
+      computerSelection === "paper" ) {
         return "Draw !"
-      } else if (playerSelection === "paper" && computerSelection === "rock" ) {
+      } 
+      else if (playerSelection === "paper" && 
+      computerSelection === "rock" ) {
         return "You Win! Paper beats Rock";
-      } else if (playerSelection === "paper" && computerSelection === "scissors" ) {
+      } 
+      else if (playerSelection === "paper" && 
+      computerSelection === "scissors" ) {
         return "You Lose! Scissors beats Paper";
-      } else if (playerSelection === "scissors" && computerSelection === "scissors" ) {
+      } 
+      else if (playerSelection === "scissors" && 
+      computerSelection === "scissors" ) {
         return "Draw !"
-      } else if (playerSelection === "scissors" && computerSelection === "rock" ) {
+      } 
+      else if (playerSelection === "scissors" && 
+      computerSelection === "rock" ) {
         return "You Lose! Rock beats Scissors";
-      } else if (playerSelection === "scissors" && computerSelection === "paper" ) {
+      } 
+      else if (playerSelection === "scissors" && 
+      computerSelection === "paper" ) {
         return "You Win! Scissors beats Paper";
-      } else { return "Invalid Input"; }
+      } 
+      else { return "Invalid Input"; }
     }
-    // showing the selction on the computer
+    
+    // showing the selection on the computer
     console.log(`The computers selection was ` + computerSelection);
     console.log(`The players selection was ` + playerSelection);
 
@@ -62,11 +81,11 @@ game = () => {
     console.log("");
 
     
-    if (result === "You Lose! Paper beats Rock" || result === "You Lose! Scissors beats Paper" || result === "You Lose! Rock beats Scissors") {
+    if (result.includes("You Lose!") === true) {
       loses++;
-      } else if (result === "You Win! Rock beats Scissors" || result === "You Win! Paper beats Rock" || result === "You Win! Scissors beats Paper") {
+      } else if (result.includes("You Win!") === true) {
         wins++;
-      } else if (result === "Draw !") {
+      } else if (result.includes("Draw !") === true) {
         draws++;
       } else {
         invalidEntries++;
